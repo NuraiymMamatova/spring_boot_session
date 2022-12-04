@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All students</title>
+    <style>
+        table, th, td {
+            margin-top:180px;
+            border: 36px;
+            color: black;
+            width: 710px;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <table>
+        <caption style="text-align: center; color: black"><h1>Students</h1></caption>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        <div th:each="student:${allStudent}">
+            <tr>
+                <td>
+                    <p th:text="${student.id}"/>
+                </td>
+                <td>
+                    <p th:text="${student.name}"/>
+                </td>
+                <td>
+                    <p th:text="${student.age}"/>
+                </td>
+                <td>
+                    <a th:href="@{/company_api/update/(id = ${student.id})}">
+                        <button style="width: 100px; height: 40px;">Update</button>
+                    </a>
+                </td>
+
+                <td>
+                    <a th:href="@{/company_api/delete(id = ${student.id})}">
+                        <button style="width: 100px; height: 40px;">Delete</button>
+                    </a>
+                </td>
+
+            </tr>
+        </div>
+    </table>
+    <a th:href="@{/company_api/new}">
+        <button style="width: 100px; height: 40px;">Add</button>
+    </a>
+</center>
+</body>
+</html>
